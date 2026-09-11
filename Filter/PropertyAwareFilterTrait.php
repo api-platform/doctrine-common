@@ -16,15 +16,23 @@ namespace ApiPlatform\Doctrine\Common\Filter;
 /**
  * @author Antoine Bluchet <soyuka@gmail.com>
  */
-interface PropertyAwareFilterInterface
+trait PropertyAwareFilterTrait
 {
     /**
-     * @param string[] $properties
+     * @var array<string, mixed>|null
      */
-    public function setProperties(array $properties): void;
+    private ?array $properties = null;
+
+    public function getProperties(): ?array
+    {
+        return $this->properties;
+    }
 
     /**
-     * @return string[]
+     * @param array<string, mixed> $properties
      */
-    public function getProperties(): ?array;
+    public function setProperties(array $properties): void
+    {
+        $this->properties = $properties;
+    }
 }
